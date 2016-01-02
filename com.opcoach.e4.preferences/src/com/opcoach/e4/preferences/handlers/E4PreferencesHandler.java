@@ -8,7 +8,8 @@
  * Contributors:
  *     Manumitting Technologies : Brian de Alwis for initial API and implementation
  *     OPCoach  : O.Prouvost fix bugs on hierarchy
- *******************************************************************************//* 
+ *******************************************************************************/
+/* 
  * Handler to open up a configured preferences dialog.
  * Written by Brian de Alwis, Manumitting Technologies.
  * Placed in the public domain.
@@ -29,29 +30,21 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.opcoach.e4.preferences.internal.E4PreferenceRegistry;
 
+public class E4PreferencesHandler {
 
-public class E4PreferencesHandler
-{
-	
-	
-	@CanExecute
-	public boolean canExecute()
-	{
-		return true;	
-	}
-	
-	@Execute
-	public void execute(@Named(IServiceConstants.ACTIVE_SHELL) Shell shell,  E4PreferenceRegistry prefReg)
-	{
-		PreferenceManager pm = prefReg.getPreferenceManager();
-		PreferenceDialog dialog = new PreferenceDialog(shell, pm);
-		dialog.create();
-		dialog.getTreeViewer().setComparator(new ViewerComparator());
-		dialog.getTreeViewer().expandAll();
-		dialog.open();
-	}
+    @CanExecute
+    public boolean canExecute() {
+        return true;
+    }
 
-	
+    @Execute
+    public void execute(@Named(IServiceConstants.ACTIVE_SHELL) Shell shell, E4PreferenceRegistry prefReg) {
+        PreferenceManager pm = prefReg.getPreferenceManager();
+        PreferenceDialog dialog = new PreferenceDialog(shell, pm);
+        dialog.create();
+        dialog.getTreeViewer().setComparator(new ViewerComparator());
+        dialog.getTreeViewer().expandAll();
+        dialog.open();
+    }
 
-	
 }
